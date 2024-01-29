@@ -1,0 +1,41 @@
+import random
+
+
+def simulador_de_dado(lancamentos=1):
+    resultados = []
+
+    for _ in range(lancamentos):
+        resultado = random.randint(1, 6)
+        resultados.append(resultado)
+
+    return resultados
+
+
+def main():
+    print("Bem-vindo ao Simulador de Dado!")
+
+    while True:
+        try:
+            num_lancamentos = int(
+                input("Quantos lançamentos de dado você deseja realizar? (Digite um número ou 0 para sair): "))
+
+            if num_lancamentos == 0:
+                print("Até logo!")
+                break
+
+            if num_lancamentos < 0:
+                print("Por favor, insira um número positivo.")
+                continue
+
+            resultados = simulador_de_dado(num_lancamentos)
+
+            print("\nResultados dos lançamentos:")
+            for i, resultado in enumerate(resultados, start=1):
+                print(f"Lançamento {i}: {resultado}")
+
+        except ValueError:
+            print("Por favor, insira um número válido.")
+
+
+if __name__ == "__main__":
+    main()
